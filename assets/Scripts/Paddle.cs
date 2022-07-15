@@ -17,13 +17,33 @@ public class Paddle : MonoBehaviour
         if (rigidBody.velocity.y < movingSpeed)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, movingSpeed);
+        }else
+        {
+            rigidBody.velocity = new Vector2 (0, 0);
         }
     }
+
+    void MoveDown()
+    {
+        if (rigidBody.velocity.y < movingSpeed)
+        {
+            rigidBody.velocity = - new Vector2 (rigidBody.velocity.x, movingSpeed);
+        }else
+        {
+            rigidBody.velocity = new Vector2(0, 0);
+        }
+    }
+
     private void FixedUpdate()
     {
-        if (Input.GetButton("Vertical"))
+        if (Input.GetKey(KeyCode.W))
         {
             MoveUp();
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            MoveDown();
         }
     }
 
