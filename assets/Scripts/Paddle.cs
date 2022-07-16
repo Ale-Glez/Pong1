@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-    public float movingSpeed = 6f;
+    public float movingSpeed = 8f;
     Rigidbody2D rigidBody;
 
     private void Awake()
@@ -17,9 +17,6 @@ public class Paddle : MonoBehaviour
         if (rigidBody.velocity.y < movingSpeed)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, movingSpeed);
-        }else
-        {
-            rigidBody.velocity = new Vector2 (0, 0);
         }
     }
 
@@ -28,10 +25,7 @@ public class Paddle : MonoBehaviour
         if (rigidBody.velocity.y < movingSpeed)
         {
             rigidBody.velocity = - new Vector2 (rigidBody.velocity.x, movingSpeed);
-        }else
-        {
-            rigidBody.velocity = new Vector2(0, 0);
-        }
+        }        
     }
 
     private void FixedUpdate()
@@ -40,7 +34,7 @@ public class Paddle : MonoBehaviour
         {
             MoveUp();
         }
-
+        
         if (Input.GetKey(KeyCode.S))
         {
             MoveDown();
